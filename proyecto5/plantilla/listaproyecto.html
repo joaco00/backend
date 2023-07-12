@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+    </head>
+    <body class="container mt-5">
+        <div class="alert alert-success d-1">LISTADO DE PROYECTOS</div>
+
+        {% if proyecto %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Fecha de Termino</th>
+                    <th>Nombre</th>
+                    <th>Responsable</th>
+                    <th>Prioridad</th>
+                    <th>--</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pro in proyecto %}
+                <tr>
+                    <td scope ="row">{{ pro.id}}</td>
+                    <td>{{ pro.fechaInicio}}</td>
+                    <td>{{ pro.fechaTermino}}</td>
+                    <td>{{ pro.nombre}}</td>
+                    <td>{{ pro.responsable}}</td>
+                    <td>{{ pro.prioridad}}</td>
+                    <td><a href="/actualizar/{{pro.id}}" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></td>
+                    <td><a href="/eliminar/{{pro.id}}" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></td>
+                </tr>
+                {% endfor %}
+            </tbody>            
+        </table>    
+        {% else %}
+            <div class="alert alert-info">No hay proyectos que mostrar</div>
+        {% endif %}
+        <a href="../" class="btn btn-danger">VOLVER</a>
+        <a href="../agregar" class="btn btn-info float-end">AGREGAR PROYECTO</a>
+    </body>
+</html>

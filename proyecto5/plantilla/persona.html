@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+    </head>
+    <body class="container mt-5">
+        <div class="alert alert-success d-1">LISTADO de EMPLEADOS</div>
+
+        {% if persona %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Fono</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for per in persona %}
+                <tr>
+                    <td scope ="row">{{ per.id}}</td>
+                    <td>{{ per.nombre}}</td>
+                    <td>{{ per.email}}</td>
+                    <td>{{ per.fono}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>            
+        </table>    
+        {% else %}
+            <div class="alert alert-info">No hay personas que mostrar</div>
+        {% endif %}
+    </body>
+</html>
